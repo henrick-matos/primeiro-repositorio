@@ -56,3 +56,5 @@ Existem dois tipos de banco de dados: relacionais (mySQL) e não relacionais ( R
 Os Bancos Relacionais usam a linguagem SQL - 'siquel' - Structured Query Language - Linguagem Estruturada de Consultas.
 
 https://onecompiler.com/mysql
+
+6 meses de delay
