@@ -1,21 +1,46 @@
+# Autenticando no Mysql: na pasta do programa mysql.exe - porta 3306
+./mysql.exe -uroot -p
+
+# Listar os bancos de dados que temos acesso
+SHOW DATABASES;
+SHOW SCHEMAS;
+
+# Criar bancos de dados
+CREATE DATABASE IF NOT EXISTS tarefas_t103;
+
+# Selecionar o banco a ser usado
+USE tarefas_t103;
+
+# Descobrir as taabelas existentes
+  SHOW TABLES;
+
 # Cria a tabela
-CREATE TABLE tarefas(
+CREATE TABLE IF NOT EXISTS tarefas(
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   titulo TEXT NOT NULL,
+  concluida BOOLEAN DEFAULT false,
   data_cadastro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   data_alteracao DATETIME NULL
 );
 
 # Cadastra na tabela
-INSERT INTO tarefas (id,titulo) VALUES (100, "Criar tabela");
+INSERT INTO tarefas (titulo) VALUES ("Criar tabela");
 INSERT INTO tarefas (titulo) VALUES ("Segunda tarefa");
 
 # Busca os dados e entraga para o back end
 SELECT * FROM tarefas;
+SELECT titulo, data_cadastro
+   FROM tarefas
+    ORDER BY id DESC
+      LIMIT 0,1;
 
 # Atualizar dados cadastrados
-UPDATE tarefas SET titulo = "Terceira Tarefa"
-  WHERE id = 101;
+UPDATE tarefas SET titulo = "Segunda Tarefa"
+  WHERE id = 1;
   
   # Apagar 
-DELETE FROM tarefas WHERE id = '101';
+DELETE FROM tarefas
+  WHERE id = '1';
+
+# Limpar tabelas
+TRUNCATE tarefas;
